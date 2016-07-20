@@ -83,7 +83,7 @@ resource "aws_instance" "nat" {
     ami = "${var.amis.nat}"
     instance_type = "t2.micro"
     key_name = "${var.key_name}"
-    security_groups = ["${aws_security_group.nat.id}"]
+    vpc_security_group_ids = ["${aws_security_group.nat.id}"]
     subnet_id = "${aws_subnet.public_1a.id}"
     associate_public_ip_address = true
     source_dest_check = false
