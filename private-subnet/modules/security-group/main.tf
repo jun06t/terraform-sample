@@ -1,9 +1,5 @@
-module "vpc" {
-  source = "./modules/vpc"
-}
-
 resource "aws_security_group" "internal" {
-    vpc_id = "${module.vpc.vpc_id}"
+    vpc_id = "${var.vpc_id}"
     name = "internal"
     description = "Allow internal traffic"
     ingress {
@@ -24,20 +20,20 @@ resource "aws_security_group" "internal" {
 }
 
 resource "aws_security_group" "nat" {
-    vpc_id = "${module.vpc.vpc_id}"
+    vpc_id = "${var.vpc_id}"
     name = "nat"
     description = "Allow internal inbound traffic"
     ingress {
         from_port = 0
         to_port = 65535
         protocol = "tcp"
-        cidr_blocks = ["${module.vpc.cidr_block}"]
+        cidr_blocks = ["${var.vpc_cidr_block}"]
     }
     ingress {
         from_port = 0
         to_port = 65535
         protocol = "udp"
-        cidr_blocks = ["${module.vpc.cidr_block}"]
+        cidr_blocks = ["${var.vpc_cidr_block}"]
     }
     egress {
         from_port = 0
@@ -52,7 +48,7 @@ resource "aws_security_group" "nat" {
 
 
 resource "aws_security_group" "ssh" {
-    vpc_id = "${module.vpc.vpc_id}"
+    vpc_id = "${var.vpc_id}"
     name = "ssh"
     description = "Allow ssh inbound traffic"
     ingress {
@@ -73,7 +69,7 @@ resource "aws_security_group" "ssh" {
 }
 
 resource "aws_security_group" "http" {
-    vpc_id = "${module.vpc.vpc_id}"
+    vpc_id = "${var.vpc_id}"
     name = "http"
     description = "Allow http inbound traffic"
     ingress {

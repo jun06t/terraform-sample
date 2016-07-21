@@ -1,12 +1,11 @@
-/*
 resource "aws_elb" "dev_elb" {
     name = "dev-elb"
     subnets = [
         "${module.vpc.subnet_public_1a}",
     ]
     security_groups = [
-        "${aws_security_group.internal.id}",
-        "${aws_security_group.http.id}",
+        "${module.security_group.internal_id}",
+        "${module.security_group.http_id}",
     ]
     listener {
         instance_port = 80
@@ -32,4 +31,3 @@ resource "aws_elb" "dev_elb" {
         Role = "ELB"
     }
 }
-*/

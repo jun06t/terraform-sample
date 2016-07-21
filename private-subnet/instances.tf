@@ -2,8 +2,8 @@ resource "aws_instance" "dev_api" {
     ami = "${var.amis.api}"
     instance_type = "t2.micro"
     key_name = "${var.key_name}"
-    security_groups = ["${aws_security_group.internal.id}"]
-    subnet_id = "${aws_subnet.private_1a.id}"
+    security_groups = ["${module.security_group.internal_id}"]
+    subnet_id = "${module.vpc.subnet_private_1a}"
     tags {
         Environment = "Development"
         Name = "dev-api"
