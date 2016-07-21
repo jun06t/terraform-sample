@@ -1,7 +1,8 @@
+/*
 resource "aws_elb" "dev_elb" {
     name = "dev-elb"
     subnets = [
-        "${aws_subnet.public_1a.id}",
+        "${module.vpc.subnet_public_1a}",
     ]
     security_groups = [
         "${aws_security_group.internal.id}",
@@ -31,3 +32,4 @@ resource "aws_elb" "dev_elb" {
         Role = "ELB"
     }
 }
+*/
