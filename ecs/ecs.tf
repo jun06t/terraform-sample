@@ -3,10 +3,12 @@ resource "aws_ecs_cluster" "api_cluster" {
 }
 
 resource "aws_ecs_service" "api" {
-    name = "api"
+    name = "api-service"
     cluster = "${aws_ecs_cluster.api_cluster.id}"
     task_definition = "${aws_ecs_task_definition.api.arn}"
     desired_count = 1
+    deployment_minimum_healthy_percent = 50
+    deployment_maximum_percent = 100
     iam_role = "${aws_iam_role.ecs_service_role.arn}"
     depends_on = ["aws_iam_role_policy.ecs_service_role_policy"]
     load_balancer {
