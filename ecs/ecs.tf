@@ -10,7 +10,6 @@ resource "aws_ecs_service" "api" {
     deployment_minimum_healthy_percent = 50
     deployment_maximum_percent = 100
     iam_role = "${aws_iam_role.ecs_service_role.arn}"
-    depends_on = ["aws_iam_role_policy.ecs_service_role_policy"]
     load_balancer {
         elb_name = "${aws_elb.dev_elb.name}"
         container_name = "nginx"
