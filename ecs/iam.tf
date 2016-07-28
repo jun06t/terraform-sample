@@ -1,11 +1,11 @@
 resource "aws_iam_role" "ecs_instance_role" {
     name = "ecs_instance_role"
-    assume_role_policy = "${file("policies/ecs-instance-role.json")}"
+    assume_role_policy = "${file("policies/ec2-assume-role.json")}"
 }
 
 resource "aws_iam_role" "ecs_service_role" {
     name = "ecs_service_role"
-    assume_role_policy = "${file("policies/ecs-service-role.json")}"
+    assume_role_policy = "${file("policies/ecs-assume-role.json")}"
 }
 
 resource "aws_iam_policy_attachment" "ecs_instance_role_attach" {
