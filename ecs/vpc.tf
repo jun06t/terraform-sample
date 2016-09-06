@@ -80,7 +80,7 @@ resource "aws_route_table_association" "private_1a" {
 
 # NAT Server
 resource "aws_instance" "nat" {
-    ami = "${var.amis.nat}"
+    ami = "${var.amis["nat"]}"
     instance_type = "t2.micro"
     key_name = "${var.key_name}"
     vpc_security_group_ids = ["${aws_security_group.nat.id}"]

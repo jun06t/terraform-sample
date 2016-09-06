@@ -1,7 +1,7 @@
 # Launch configuration
 resource "aws_launch_configuration" "dev_api" {
     name = "dev-api"
-    image_id = "${var.amis.ecs}"
+    image_id = "${var.amis["ecs"]}"
     instance_type = "t2.micro"
     iam_instance_profile = "${aws_iam_instance_profile.ecs.id}"
     key_name = "${var.key_name}"
