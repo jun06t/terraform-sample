@@ -86,7 +86,7 @@ resource "aws_appautoscaling_policy" "scale_in" {
     cooldown = 300
     metric_aggregation_type = "Average"
     step_adjustment {
-        metric_interval_lower_bound = 0
+        metric_interval_upper_bound = 0
         scaling_adjustment = -1
     }
     depends_on = ["aws_appautoscaling_target.target"]
