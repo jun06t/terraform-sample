@@ -26,6 +26,17 @@ resource "aws_autoscaling_group" "dev_api" {
   vpc_zone_identifier       = ["${aws_subnet.private_1a.id}"]
   load_balancers            = ["${aws_elb.dev_elb.name}"]
 
+  enabled_metrics = [
+    "GroupMinSize",
+    "GroupMaxSize",
+    "GroupDesiredCapacity",
+    "GroupInServiceInstances",
+    "GroupPendingInstances",
+    "GroupStandbyInstances",
+    "GroupTerminatingInstances",
+    "GroupTotalInstances",
+  ]
+
   tag = {
     key                 = "Name"
     value               = "dev-api-asg"
