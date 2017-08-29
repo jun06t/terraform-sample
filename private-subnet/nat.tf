@@ -1,6 +1,6 @@
 # NAT Server
 resource "aws_instance" "nat" {
-  ami                         = "${var.amis.nat}"
+  ami                         = "${var.amis["nat"]}"
   instance_type               = "t2.micro"
   key_name                    = "${var.key_name}"
   vpc_security_group_ids      = ["${module.security_group.nat_id}"]

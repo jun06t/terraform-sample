@@ -1,5 +1,5 @@
 resource "aws_instance" "dev_api" {
-  ami             = "${var.amis.api}"
+  ami             = "${var.amis["api"]}"
   instance_type   = "t2.micro"
   key_name        = "${var.key_name}"
   security_groups = ["${module.security_group.internal_id}"]
