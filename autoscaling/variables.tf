@@ -7,8 +7,10 @@ variable "region" {
 }
 
 variable "amis" {
+  type = "map"
+
   default = {
-    api = "YOUR_AMI_ID"
+    api = "ami-0011e566"
     nat = "ami-27d6e626"
   }
 }
