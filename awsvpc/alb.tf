@@ -25,6 +25,7 @@ resource "aws_alb_target_group" "test_api" {
   port                 = 80
   protocol             = "HTTP"
   vpc_id               = "${aws_vpc.vpc.id}"
+  target_type          = "ip"
   deregistration_delay = 30
 
   health_check {

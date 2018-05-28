@@ -5,6 +5,7 @@
     "cpu": 64,
     "memory": 100,
     "essential": true,
+    "network_mode": "awsvpc",
     "portMappings": [
       {
         "containerPort": 80,
