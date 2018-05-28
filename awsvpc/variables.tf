@@ -13,5 +13,5 @@ variable "amis" {
 }
 
 variable "key_name" {
-  default = "YOUR_SSH_KEY_PAIR_NAME"
+  default = "awsvpc"
 }

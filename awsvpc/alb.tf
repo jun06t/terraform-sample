@@ -3,6 +3,7 @@ resource "aws_alb" "test_api" {
 
   subnets = [
     "${aws_subnet.public_1a.id}",
+    "${aws_subnet.public_1c.id}",
   ]
 
   security_groups = [

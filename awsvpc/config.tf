@@ -3,7 +3,7 @@ terraform {
 }
 
 provider "aws" {
-  version = "~> 1.20.0"
+  version = "~> 1.19.0"
 
   access_key = "${var.access_key}"
   secret_key = "${var.secret_key}"

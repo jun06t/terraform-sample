@@ -22,12 +22,23 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_subnet" "public_1a" {
   vpc_id                  = "${aws_vpc.vpc.id}"
-  cidr_block              = "172.17.10.0/24"
+  cidr_block              = "172.17.0.0/24"
   availability_zone       = "ap-northeast-1a"
   map_public_ip_on_launch = "1"
 
   tags {
     Name = "public-1a"
+  }
+}
+
+resource "aws_subnet" "public_1c" {
+  vpc_id                  = "${aws_vpc.vpc.id}"
+  cidr_block              = "172.17.20.0/24"
+  availability_zone       = "ap-northeast-1c"
+  map_public_ip_on_launch = "1"
+
+  tags {
+    Name = "public-1c"
   }
 }
 

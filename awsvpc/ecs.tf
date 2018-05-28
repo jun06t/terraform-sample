@@ -7,9 +7,11 @@ resource "aws_ecs_service" "api_service" {
   cluster                            = "${aws_ecs_cluster.api_cluster.id}"
   task_definition                    = "${aws_ecs_task_definition.api.arn}"
   desired_count                      = 1
-  deployment_minimum_healthy_percent = 50
+  deployment_minimum_healthy_percent = 0
   deployment_maximum_percent         = 100
-  iam_role                           = "${aws_iam_service_linked_role.ecs.arn}"
+  # Don't set iam_role if you use service linked role.
+  # For more detail, See this issue. https://github.com/terraform-providers/terraform-provider-aws/issues/4657
+  #iam_role                           = "${aws_iam_service_linked_role.ecs.arn}"
 
   network_configuration {
     security_groups = [
