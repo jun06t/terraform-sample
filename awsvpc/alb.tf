@@ -31,7 +31,7 @@ resource "aws_alb_target_group" "test_api" {
 
   health_check {
     interval            = 30
-    path                = "/alive"
+    path                = "/"
     protocol            = "HTTP"
     timeout             = 5
     healthy_threshold   = 2
